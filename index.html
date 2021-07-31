@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="./resources/css/style.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header class="container-fluid gradient text-center text-white p-2">
+        <h1 class="font-weight-bold">Weather Dashboard</h1>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <h2 class="mt-1 font-weight-bold">Search for a City:</h2>
+                <div class="input-group mb-3">
+                    <input id="enter-city" type="text" class="form-control p-4 border-dark text-lg-left"
+                        placeholder="Enter a city" aria-label="Enter a city">
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-primary btnColor mb-3 p-2 w-100" type="button" id="search-button">Search
+                    </button>
+                </div>
+                <div class="input-group mb-3 border-bottom border-dark">
+                    <button class="btn btn-primary  btnColor mb-3 p-2 w-100" type="button" id="clear-history">Clear
+                        history</button>
+                </div>
+                <div id="history"></div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="col-lg-13 card-body my-3 pl-2 d-none border border-dark" id="today-weather">
+                    <h3 id="city-name" class="city-name align-middle"></h3>
+                    <img id="current-pic" alt="">
+                    <p id="temperature"></p>
+                    <p id="wind-speed"></p>
+                    <p id="humidity"></p>
+                    <p id="UV-index"></p>
+                </div>
+
+                <div class="row d-none" id="fiveday-header">
+                    <div class="col-12">
+                        <h3 class="font-weight-bold">5-Day Forecast:</h3>
+                    </div>
+                </div>
+
+                
+                    <div class="row">
+                        <div class="col-md-2 forecast cards-color text-white font-weight-bold m-3 w-100"></div>
+                        <div class="col-md-2 forecast cards-color text-white font-weight-bold m-3 w-100"></div>
+                        <div class="col-md-2 forecast cards-color text-white font-weight-bold m-3 w-100"></div>
+                        <div class="col-md-2 forecast cards-color text-white font-weight-bold m-3 w-100"></div>
+                        <div class="col-md-2 forecast cards-color text-white font-weight-bold m-3 w-100"></div>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./resources/js/script.js"></script>
+</body>
+
+</body>
+
+</html>
