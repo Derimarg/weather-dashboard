@@ -1,0 +1,26 @@
+:root{
+    --header-gradient-left: #3B6CC1;
+    --header-gradient-rigth: #250758;
+    --bottom-color: #5EADF2;
+    --forecast-color: #344859;
+    --city-label: #B7B7B7;
+ }
+
+.gradient {
+    background-color: var(--header-gradient-left);background-image: linear-gradient(to right,var(--header-gradient-left),var(--header-gradient-rigth));
+}
+
+ .btnColor {
+    background-color: var(--bottom-color);
+ }
+
+ .btnColor :hover {
+    color: white;
+ }
+
+ .cityLabel {
+     background-color: var(--city-label);
+ }
+.cards-color {
+     background-color: var(--forecast-color) ;
+}
