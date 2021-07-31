@@ -135,13 +135,35 @@ function weatherDashboard() {
         getWeather(searchTerm);
         searchHistory.push(searchTerm);
         localStorage.setItem("search", JSON.stringify(searchHistory));
+        callSearchHistory();
     })
 
     // Clear History
     clearSearch.addEventListener("click", function () {
         localStorage.clear();
         searchHistory = [];
+        callSearchHistory();
     })
+
+    function callSearchHistory() {
+        history.innerHTML = "";
+        for (let i = 0; i < searchHistory.length; i++) {
+            const historyItem = document.createElement("input");
+            historyItem.setAttribute("type", "text");
+            historyItem.setAttribute("readonly", true);
+            historyItem.setAttribute("class", "input-group mb-3 p-2 cityLabel border-0 rounded d-block text-center");
+            historyItem.setAttribute("value", searchHistory[i]);
+            historyItem.addEventListener("click", function () {
+                getWeather(historyItem.value);
+            })
+            history.append(historyItem);
+        }
+    }
+
+    callSearchHistory();
+    if (searchHistory.length > 0) {
+        getWeather(searchHistory[searchHistory.length - 1]);
+    }
 
 }
 
