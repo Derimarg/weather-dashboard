@@ -67,7 +67,7 @@ A web application that allow to search for a city to get the current weather and
 
     Example:
 
-![Project Demo](./resources/videos/demo.mov)
+![Project Demo](./resources/videos/demo.mp4)
 ---
 
 ### Table of Contents
