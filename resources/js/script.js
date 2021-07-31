@@ -38,8 +38,53 @@ function weatherDashboard() {
                 currentHumidityEl.innerHTML = "Humidity: " + response.data.main.humidity + "%";
                 currentWindEl.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
                 
+                // Get UV Index
+                let lat = response.data.coord.lat;
+                let lon = response.data.coord.lon;
+                let UVQueryURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&cnt=1";
+                axios.get(UVQueryURL)
+                    .then(function (response) {
+                        let UVIndex = document.createElement("span");
+                        
+                        // When UV Index is good, shows green, when ok shows yellow, when bad shows red
+                        if (response.data[0].value < 4 ) {
+                            UVIndex.setAttribute("class", "badge badge-success p-2");
+                            UVIndex.setAttribute("style", "background-color: #147346;");
+                        }
+                        else if (response.data[0].value < 8) {
+                            UVIndex.setAttribute("class", "badge badge-warning p-2");
+                        }
+                        else {
+                            UVIndex.setAttribute("class", "badge badge-danger p-2");
+                        }
+                        console.log(response.data[0].value)
+                        UVIndex.innerHTML = response.data[0].value;
+                        currentUVEl.innerHTML = "UV Index: ";
+                        currentUVEl.append(UVIndex);
+                    });
                 
             });
+    }
+
+    /*  Converting Temperatures
+
+        It is sometimes necessary to convert temperature from one scale to another. Here is how to do this.
+            1. To convert from oC to oF, use the formula: oF = oC x 1.8 + 32.
+            2. To convert from oF to oC, use the formula: oC = (oF-32) ÷ 1.8.
+            3. To convert from K to oC, use the formula: oC = K – 273.15
+            4. To convert from oC to K, use the formula: K = oC + 273.15.
+            5. To convert from oF to K, use the formula: K = 5/9 (oF – 32) + 273.15.
+            6. To convert from K to oF, use the formula: oF = 1.8(K – 273.15) + 32.
+
+    Use formula 1 and 3 
+
+    F = C x 1.8 + 32
+    C = K - 273.15 
+    
+    F = (K - 273.15) x 1.8 + 32       */
+
+        function k2f(K) {
+        return Math.floor((K - 273.15) * 1.8 + 32);
     }
 
     // Get history
@@ -57,7 +102,6 @@ function weatherDashboard() {
         searchHistory = [];
         renderSearchHistory();
     })
-
 
     function renderSearchHistory() {
         historyEl.innerHTML = "";
